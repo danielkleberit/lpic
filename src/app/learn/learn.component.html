@@ -1,0 +1,48 @@
+<div *ngFor="let a of Questions; let i = index">
+  <h2 [ngStyle]="{'color': 'green'}">
+    Question Number: {{ i + 1 }}
+  </h2>
+
+  <h3 [ngStyle]="{'color': 'black'}">
+    Question: {{ a.question }}
+  </h3>
+
+  <h3 [ngStyle]="{'color': 'black'}">
+    Options:
+    <div *ngFor="let option of a.options; let i = index" [ngStyle]="{'color': 'red'}">
+      {{ option }}
+    </div>
+  </h3>
+
+  <button (click)="toggleAnswerVisibility(i)">
+    Show Answer
+  </button>
+
+  <button (click)="onBack" routerLink="/home">
+    Go Back
+  </button>
+ 
+
+  <button routerLink="/einzel"> einzelne Fragen</button>
+
+  <div class="answer-container" *ngIf="a.showAnswer">
+    <h3 class="answer-header">
+      Correct Answer:
+      <ng-container *ngFor="let answer of a.correctAnswer; let last = last">
+        <span class="answer-item">{{ answer }}</span>
+        <span class="comma" *ngIf="!last">,</span>
+      </ng-container>
+    </h3>
+  
+  </div>
+
+
+  
+  
+
+  
+  
+  
+
+
+

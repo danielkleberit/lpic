@@ -1,0 +1,18 @@
+<div>
+    <p>Question: {{currentIndex+1}}</p>
+<h4>
+
+   {{Questions[currentIndex].question}}
+   <div *ngFor="let option of Questions[currentIndex].options">
+{{option}}
+
+   </div> 
+</h4>
+</div>
+<button (click)="onBack()">Back</button>
+<button (click)="onNext()">Next</button>
+<button (click)="toggleAnswerVisibility(currentIndex)">Show Answer</button>
+<button routerLink="/learn">zur FragenListe</button>
+<button (click)="die20()">+20</button>
+<button (click)="diemin20()">-20</button>
+<button (click)="dieLEtzte()">Die letzze</button>

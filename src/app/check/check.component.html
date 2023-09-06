@@ -1,0 +1,34 @@
+<div>
+    <p>Question: {{currentIndex+1}}</p>
+
+    <div *ngFor="let option of Questions[currentIndex]">
+        <label *ngIf="Questions[currentIndex].questionType==='fill-in'">
+            <input type="text">{{option}}
+        </label>
+    
+    </div>
+    
+<h4>
+
+   {{Questions[currentIndex].question}}
+   <div *ngFor="let option of Questions[currentIndex].options">
+    <label *ngIf="Questions[currentIndex].questionType==='single-choice'">
+        <input type="radio" name="answer">
+    {{option}}
+</label>
+<label *ngIf="Questions[currentIndex].questionType==='multiple-choice'">
+    <input type="checkbox">
+{{option}}
+</label>
+
+</div> 
+
+</h4>
+</div>
+<button (click)="onBack()">Back</button>
+<button (click)="onNext()">Next</button>
+<button (click)="toggleAnswerVisibility(currentIndex)">Show Answer</button>
+<button routerLink="/learn">zur FragenListe</button>
+<button (click)="die20()">+20</button>
+<button (click)="diemin20()">-20</button>
+<button (click)="dieLEtzte()">Die letzze</button>

@@ -1,18 +1,52 @@
-<div>
-    <p>Question: {{currentIndex+1}}</p>
-<h4>
+<h1 [ngStyle]="{'color': 'green'}">
+  Learnphase - Einzelfrage
+</h1>
 
-   {{Questions[currentIndex].question}}
-   <div *ngFor="let option of Questions[currentIndex].options">
-{{option}}
 
-   </div> 
-</h4>
-</div>
-<button (click)="onBack()">Back</button>
-<button (click)="onNext()">Next</button>
-<button (click)="toggleAnswerVisibility(currentIndex)">Show Answer</button>
-<button routerLink="/learn">zur FragenListe</button>
-<button (click)="die20()">+20</button>
-<button (click)="diemin20()">-20</button>
-<button (click)="dieLEtzte()">Die letzze</button>
+<div class="button-container">   
+   <button routerLink="/home">Startseite</button>
+   <button routerLink="/learn">zur FragenListe</button>
+ </div>
+
+<div *ngIf="Questions.length > 0">
+   <div *ngFor="let question of Questions; let i = index" [style.display]="currentIndex === i ? 'block' : 'none'">
+     <h2 [ngStyle]="{'color': 'green'}">
+       Frage Nummer: {{ i + 1 }}
+     </h2>
+ 
+     <h4 [ngStyle]="{'color': 'black'}">
+      {{ question.question }}
+     </h4>
+
+     <p>
+      Options:
+         <div *ngFor="let option of question.options">
+         {{ option }}
+         </div>
+      <p>
+         
+     <button (click)="showAnswerForQuestion(i)">
+      Antwort anzeigen:
+     </button>
+ 
+     <div class="answer-container" *ngIf="question.showAnswer">
+       <h4 class="answer-header">
+         Richtige Antwort:
+         <ng-container *ngFor="let answer of question.correctAnswer; let last = last">
+           <span class="answer-item">{{ answer }}</span>
+           <span class="comma" *ngIf="!last">,</span>
+         </ng-container>
+       </h4>
+     </div>
+   </div>
+ </div>
+ 
+ <button (click)="onSkipBack()">-Überspringen</button>
+ <button (click)="dieErste()">Die Erste</button>
+ <button (click)="diemin20()">-20</button>
+ <button (click)="onBack()">Zurück</button>
+ <button (click)="onNext()">Nächste</button>
+ <button (click)="die20()">+20</button>
+ <button (click)="dieLEtzte()">Die letzte</button>
+ <button (click)="onSkip()">+Überspringen</button>
+ 

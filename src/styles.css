@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilos para todos los botones */
+.site-frame {
+    border: 2px solid black;
+  }
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Alinea los botones al principio y al final del contenedor */
+  }
+  
+
+
+button {
+    background-color: green; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: 2px solid white; /* Borde negro de 2 píxeles */
+    padding: 10px 20px; /* Relleno */
+    border-radius: 5px; /* Esquinas redondeadas */
+    cursor: pointer; /* Cursor al pasar sobre el botón */
+    font-size: 13px; /* Tamaño de fuente */
+  }
+
+  /* Efecto al pasar el cursor sobre los botones */
+  button:hover {
+    background-color: #2980b9; /* Cambio de color al pasar el cursor */
+  }
+  
+
+
+
+
+ 

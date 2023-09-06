@@ -9,6 +9,8 @@ import { LearnComponent } from './learn/learn.component';
 import { CheckComponent } from './check/check.component';
 import { EinzelfrageComponent } from './einzelfrage/einzelfrage.component';
 import { ExamComponent } from './exam/exam.component';
+import { ResultComponent } from './result/result.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { ExamComponent } from './exam/exam.component';
     LearnComponent,
     CheckComponent,
     EinzelfrageComponent,
-    ExamComponent
+    ExamComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

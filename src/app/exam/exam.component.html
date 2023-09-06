@@ -1,1 +1,44 @@
-<p>exam works!</p>
+<h1 [ngStyle]="{'color': 'green'}">
+  Examphase
+</h1>
+
+
+<div class="button-container">   
+    <button routerLink="/home">Startseite</button>
+  </div>   
+   
+   <div *ngIf="Questions && Questions.length > 0">
+    <h2 [ngStyle]="{'color': 'green'}"> Frage Nummer: {{ currentIndex + 1 }}</h2>
+
+
+    <h4 [ngStyle]="{'color': 'black'}">
+      {{ Questions[currentIndex].question }}
+    </h4>
+  
+    <div *ngIf="Questions[currentIndex].questionType === 'fill-in'">
+      <input type="text" [(ngModel)]="filling" (input)="benutzerAnswer(filling)" />
+    </div>
+  
+    <div *ngFor="let option of Questions[currentIndex]?.options">
+      <label *ngIf="Questions[currentIndex]?.questionType === 'single-choice'">
+        <input type="radio" name="answer" [value]="option" (click)="benutzerAnswer(option)">
+        {{ option }}
+      </label>
+      <label *ngIf="Questions[currentIndex]?.questionType === 'multiple-choice'">
+        <input type="checkbox" [value]="option" (change)="choosemulti(option, $event)">
+        {{ option }}
+      </label>
+    </div>
+  </div>
+  
+  <br>
+
+  <button (click)="onSkipBack()">-Überspringen</button>
+  <button (click)="dieErste()">Die Erste</button>
+  <button (click)="diemin20()">-20</button>
+  <button (click)="onBack()">Zurück</button>
+  <button (click)="onNext()" [disabled]="!isCurrentQuestionAnswered()">Nächste</button>
+  <button (click)="die20()">+20</button>
+  <button (click)="dieLEtzte()">Die letzte</button>
+  <button (click)="onSkip()">+Überspringen</button>
+  

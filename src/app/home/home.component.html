@@ -1,4 +1,16 @@
-<h1>Hali Halo</h1>
-<button routerLink="/learn"> Learn Phase</button>
-<button routerLink="/check">Check Phase</button>
-<button routerLink="/exam">Exam Phase</button>
+<div class="container">
+    <h1 [ngStyle]="{'color': 'green'}">
+        Herzlich willkommen</h1>
+
+    <h3 [ngStyle]="{'color': 'green', 'margin-top': '4px'}"> Ihre LPIC-1 Lern-App </h3>
+
+<div style="text-align: center;">
+ 
+    <button class="mi-boton" routerLink="/learn">Learn Mode</button>
+    <button routerLink="/check">Check Mode</button>
+    <button routerLink="/exam">Exam Mode</button>
+    <br>
+    <button (click)="Programmbeenden()">Programm beenden</button>
+
+  </div>
+  </div>

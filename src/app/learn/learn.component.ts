@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { QuizService } from '../quiz.service';
 
-
-
 @Component({
   selector: 'app-learn',
   templateUrl: './learn.component.html',
@@ -18,8 +16,6 @@ export class LearnComponent {
 
 
 selectedQuestionIndex: number | null=null;
-
-
 
 ngOnInit():void{
   this.service.getQuestion().subscribe(data=> {this.Questions=data})

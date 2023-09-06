@@ -1,34 +1,43 @@
-<div>
-    <p>Question: {{currentIndex+1}}</p>
+<h1 [ngStyle]="{'color': 'green'}">
+  Checkphase
+</h1>
+   
+  <div class="button-container">   
+    <button routerLink="/home">Startseite</button>
+  </div>   
+   
+   <div *ngIf="Questions && Questions.length > 0">
+    <h2 [ngStyle]="{'color': 'green'}"> Frage Nummer: {{ currentIndex + 1 }}</h2>
 
-    <div *ngFor="let option of Questions[currentIndex]">
-        <label *ngIf="Questions[currentIndex].questionType==='fill-in'">
-            <input type="text">{{option}}
-        </label>
-    
+
+    <h4 [ngStyle]="{'color': 'black'}">
+      {{ Questions[currentIndex].question }}
+    </h4>
+  
+    <div *ngIf="Questions[currentIndex].questionType === 'fill-in'">
+      <input type="text" [(ngModel)]="filling" (input)="benutzerAnswer(filling)" />
     </div>
-    
-<h4>
+  
+    <div *ngFor="let option of Questions[currentIndex]?.options">
+      <label *ngIf="Questions[currentIndex]?.questionType === 'single-choice'">
+        <input type="radio" name="answer" [value]="option" (change)="benutzerAnswer(option)">
+        {{ option }}
+      </label>
+      <label *ngIf="Questions[currentIndex]?.questionType === 'multiple-choice'">
+        <input type="checkbox" [value]="option" (change)="choosemulti(option, $event)">
+        {{ option }}
+      </label>
+    </div>
+  </div>
+  
+  <br>
 
-   {{Questions[currentIndex].question}}
-   <div *ngFor="let option of Questions[currentIndex].options">
-    <label *ngIf="Questions[currentIndex].questionType==='single-choice'">
-        <input type="radio" name="answer">
-    {{option}}
-</label>
-<label *ngIf="Questions[currentIndex].questionType==='multiple-choice'">
-    <input type="checkbox">
-{{option}}
-</label>
-
-</div> 
-
-</h4>
-</div>
-<button (click)="onBack()">Back</button>
-<button (click)="onNext()">Next</button>
-<button (click)="toggleAnswerVisibility(currentIndex)">Show Answer</button>
-<button routerLink="/learn">zur FragenListe</button>
-<button (click)="die20()">+20</button>
-<button (click)="diemin20()">-20</button>
-<button (click)="dieLEtzte()">Die letzze</button>
+  <button (click)="onSkipBack()">-Überspringen</button>
+  <button (click)="dieErste()">Die Erste</button>
+  <button (click)="diemin20()">-20</button>
+  <button (click)="onBack()">Zurück</button>
+  <button (click)="onNext()">Nächste</button>
+  <button (click)="die20()">+20</button>
+  <button (click)="dieLEtzte()">Die letzte</button>
+  <button (click)="onSkip()">+Überspringen</button>
+  

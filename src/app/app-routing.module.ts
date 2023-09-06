@@ -5,6 +5,7 @@ import { LearnComponent } from './learn/learn.component';
 import { CheckComponent } from './check/check.component';
 import { EinzelfrageComponent } from './einzelfrage/einzelfrage.component';
 import { ExamComponent } from './exam/exam.component';
+import { ResultComponent } from './result/result.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'learn', component: LearnComponent },
   { path: 'check', component: CheckComponent },
   { path:'einzel',component:EinzelfrageComponent},
-  { path: 'exam', component:ExamComponent}
+  { path: 'exam', component:ExamComponent},
+  {path:'result',component:ResultComponent}
 ];
 
 @NgModule({

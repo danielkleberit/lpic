@@ -1,38 +1,50 @@
+<h1 [ngStyle]="{'color': 'green'}">
+  Learnphase
+</h1>
+
+
+<div class="button-container">   
+  <button routerLink="/home">Startseite</button>
+  <button routerLink="/einzel"> Einzelne Frage</button>
+</div>
+
 <div *ngFor="let a of Questions; let i = index">
   <h2 [ngStyle]="{'color': 'green'}">
-    Question Number: {{ i + 1 }}
+    Frage Nummer: {{ i + 1 }}
   </h2>
 
-  <h3 [ngStyle]="{'color': 'black'}">
-    Question: {{ a.question }}
-  </h3>
+  <h4 [ngStyle]="{'color': 'black'}">
+    {{ a.question }}
+  </h4>
 
-  <h3 [ngStyle]="{'color': 'black'}">
+  <p>
     Options:
-    <div *ngFor="let option of a.options; let i = index" [ngStyle]="{'color': 'red'}">
+       <div *ngFor="let option of a.options; let i = index">
+       {{ option }}
+       </div>
+    <p>
+
+  <!-- <h4 [ngStyle]="{'color': 'black'}">
+    Options:
+    <div *ngFor="let option of a.options; let i = index" [ngStyle]="{'color': 'black'}">
       {{ option }}
     </div>
-  </h3>
+  </h4> -->
 
   <button (click)="toggleAnswerVisibility(i)">
-    Show Answer
+    Antwort anzeigen: 
   </button>
 
-  <button (click)="onBack" routerLink="/home">
-    Go Back
-  </button>
- 
-
-  <button routerLink="/einzel"> einzelne Fragen</button>
+  
 
   <div class="answer-container" *ngIf="a.showAnswer">
-    <h3 class="answer-header">
-      Correct Answer:
+    <h4 class="answer-header">
+      Richtige Antwort:
       <ng-container *ngFor="let answer of a.correctAnswer; let last = last">
         <span class="answer-item">{{ answer }}</span>
         <span class="comma" *ngIf="!last">,</span>
       </ng-container>
-    </h3>
+    </h4>
   
   </div>
 

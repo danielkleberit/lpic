@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Esto asegura que el contenedor ocupe toda la altura de la ventana */
+    text-align: center; /* Centra el texto horizontalmente */
+    margin: 3px;
+  }
+  
+  /* Estilos opcionales para los botones si lo necesitas */
+  .container button {
+    margin: 3px;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-between; /* Alinea los botones al principio y al final del contenedor */
+  }

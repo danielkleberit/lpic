@@ -19,10 +19,18 @@ export class EinzelfrageComponent {
   onNext(): void {
     if (this.currentIndex < this.Questions.length - 1) {
       this.currentIndex++;
-
     }
   }
 
+  onSkipBack(): void {
+    if (this.currentIndex > 0) {
+    this.currentIndex--;
+    }
+  }
+
+  dieErste(): void {
+    this.currentIndex = 0;
+  }
 
   dieLEtzte(): void {
     if (this.currentIndex < this.Questions.length - 1) {
@@ -32,7 +40,7 @@ export class EinzelfrageComponent {
   }
 
   die20(): void {
-    if (this.currentIndex+20 < this.Questions.length - 1){
+    if (this.currentIndex + 19 < this.Questions.length - 1){
 
       this.currentIndex += 20;
     }
@@ -45,25 +53,22 @@ export class EinzelfrageComponent {
     }
   }
 
-
   onBack(): void {
     if (this.currentIndex > 0)
       this.currentIndex--;
   }
   onSkip(): void {
-    this.currentIndex++;
+    if (this.currentIndex < this.Questions.length - 1) {
+      this.currentIndex++;}
   }
 
   ngOnInit(): void {
     this.service.getQuestion().subscribe(data => { this.Questions = data })
   }
 
-  toggleAnswerVisibility(index: number) {
-    this.Questions[index].showAnswer = !this.Questions[index].showAnswer;
+  showAnswerForQuestion(index: number) {
+    this.Questions[index].showAnswer = true;
   }
-
-  
-
-
+    
 }
 
